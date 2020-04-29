@@ -1,4 +1,4 @@
-# SnipCart V3 plugin for Gatsby JS (Beta version)
+# Gatsby JS plugin for SnipCart V3 with advanced settings (Beta version)
 
 [Snipcart](https://snipcart.com/)
 
@@ -7,7 +7,7 @@ This plugin include a Context for quantity in cart and detect if user is logged 
 ## Install
 
 ```bash
-    npm install gatsby-plugin-snipcart-3
+    npm install gatsby-plugin-snipcart-advanced
 ```
 
 ## API KEY
@@ -28,7 +28,7 @@ In your `gatsby-config.js` file, add:
 module.exports = {
   plugins: [
     {
-        resolve: `gatsby-plugin-snipcart-3`,
+        resolve: `gatsby-plugin-snipcart-advanced`,
         options: {
             version: '3.0.12',
             lang: 'fr',
@@ -47,6 +47,8 @@ module.exports = {
 
 ## Options
 
+Read the snipcart documentation [https://docs.snipcart.com/v3](https://docs.snipcart.com/v3)
+
 - version : define version of snipcart / default 3.0.12
 - lang : define lang / default "en"
 - currency : define currency / default "usd"
@@ -60,7 +62,7 @@ module.exports = {
 ## use the context in component
 
 ```jsx
-import {SnipCartContext} from 'gatsby-plugin-snipcart-3/context';
+import {SnipCartContext} from 'gatsby-plugin-snipcart-advanced/context';
 
 const MyComponent = () => {
   const {userStatus, cartQuantity} = useContext(SnipCartContext);

@@ -4,6 +4,8 @@ export const initialState = {
   ready: false,
   userStatus: "SignedOut",
   cartQuantity: 0,
+  cartTotal: 0,
+  cartSubTotal: 0,
 };
 
 // create context for dispatch
