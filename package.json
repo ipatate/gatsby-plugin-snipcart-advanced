@@ -8,7 +8,7 @@
     "gatsby-plugin",
     "snipcart"
   ],
-  "homepage": "https://github.com/ipatate/gatsby-plugin-snipcart-3/blob/master/readme.md",
+  "homepage": "https://github.com/ipatate/gatsby-plugin-snipcart-advanced/blob/master/readme.md",
   "author": "Faramaz Patrick <info@goodmotion.fr>",
   "license": "MIT",
   "dependencies": {
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ipatate/gatsby-plugin-snipcart-3"
+    "url": "https://github.com/ipatate/gatsby-plugin-snipcart-advanced"
   },
   "scripts": {
     "clean": "rm -rf store components context.js gatsby-browser.js gatsby-ssr.js",

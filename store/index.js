@@ -12,7 +12,9 @@ var React = require("react");
 var initialState = {
   ready: false,
   userStatus: "SignedOut",
-  cartQuantity: 0
+  cartQuantity: 0,
+  cartTotal: 0,
+  cartSubTotal: 0
 }; // create context for dispatch
 
 exports.initialState = initialState;
@@ -34,6 +36,16 @@ var reducer = function reducer(state, action) {
     case "setUserStatus":
       return (0, _extends2.default)({}, state, {}, {
         userStatus: action.payload
+      });
+
+    case "setTotal":
+      return (0, _extends2.default)({}, state, {}, {
+        cartTotal: action.payload
+      });
+
+    case "setSubTotal":
+      return (0, _extends2.default)({}, state, {}, {
+        cartSubTotal: action.payload
       });
 
     default:
@@ -69,6 +81,16 @@ var useStore = function useStore() {
         dispatch({
           type: "setUserStatus",
           payload: customer.status
+        }); // connected or not
+
+        dispatch({
+          type: "setTotal",
+          payload: cart.total
+        }); // connected or not
+
+        dispatch({
+          type: "setSubTotal",
+          payload: cart.subtotal
         });
       }; // listen store update
 
