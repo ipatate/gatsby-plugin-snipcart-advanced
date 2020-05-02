@@ -6,28 +6,29 @@ const {useStore, SnipCartContext} = require('../store');
  */
 const SnipCartProvider = props => {
   const [state, dispatch] = useStore();
-  // add style/script and listen snipcart
+  const {defaultLang, locales} = props;
+  const changeLanguage = lang => {
+    const lng = locales[defaultLang] || {};
+    window.Snipcart.api.session.setLanguage(lang, lng);
+  };
   React.useEffect(() => {
-    const {defaultLang, locales} = props;
     const listenSnipCart = () => {
       document.addEventListener('snipcart.ready', () => {
         dispatch({type: 'setReady', payload: true});
-        const lng = locales[defaultLang] || {};
-        window.Snipcart.api.session.setLanguage(defaultLang, lng);
+        changeLanguage(defaultLang);
       });
     };
 
     if (window.Snipcart !== undefined) {
       dispatch({type: 'setReady', payload: true});
-      const lng = locales[defaultLang] || {};
-      window.Snipcart.api.session.setLanguage(defaultLang, lng);
+      changeLanguage(defaultLang);
     } else {
       listenSnipCart();
     }
-  }, [props, dispatch]);
+  }, [props, dispatch, defaultLang, locales]);
 
   return (
-    <SnipCartContext.Provider value={state}>
+    <SnipCartContext.Provider value={{state, changeLanguage}}>
       {props.children}
     </SnipCartContext.Provider>
   );

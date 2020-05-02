@@ -76,11 +76,28 @@ Default values :
 
 ## use the context in component
 
+Use the context of the Snipcart plugin. You have 2 values in the context :
+- state (object of value)
+- changeLanguage (function)
+
+When you use the changeLanguage function, it use the locales string define in config of plugin.
+
+```jsx
+  import {SnipCartContext} from 'gatsby-plugin-snipcart-advanced/context';
+
+  const {state, changeLanguage} = useContext(SnipCartContext);
+
+  changeLanguage('en');
+```
+
+### Example of component :
+
 ```jsx
 import {SnipCartContext} from 'gatsby-plugin-snipcart-advanced/context';
 
 const MyComponent = () => {
-  const {userStatus, cartQuantity} = useContext(SnipCartContext);
+  const {state} = useContext(SnipCartContext);
+  const {userStatus, cartQuantity} = state;
 return (
     <div>
       {userStatus === 'SignedOut' ? (

@@ -16,21 +16,24 @@ var _require = require('../store'),
 var SnipCartProvider = function SnipCartProvider(props) {
   var _useStore = useStore(),
       state = _useStore[0],
-      dispatch = _useStore[1]; // add style/script and listen snipcart
+      dispatch = _useStore[1];
 
+  var defaultLang = props.defaultLang,
+      locales = props.locales;
+
+  var changeLanguage = function changeLanguage(lang) {
+    var lng = locales[defaultLang] || {};
+    window.Snipcart.api.session.setLanguage(lang, lng);
+  };
 
   React.useEffect(function () {
-    var defaultLang = props.defaultLang,
-        locales = props.locales;
-
     var listenSnipCart = function listenSnipCart() {
       document.addEventListener('snipcart.ready', function () {
         dispatch({
           type: 'setReady',
           payload: true
         });
-        var lng = locales[defaultLang] || {};
-        window.Snipcart.api.session.setLanguage(defaultLang, lng);
+        changeLanguage(defaultLang);
       });
     };
 
@@ -39,14 +42,16 @@ var SnipCartProvider = function SnipCartProvider(props) {
         type: 'setReady',
         payload: true
       });
-      var lng = locales[defaultLang] || {};
-      window.Snipcart.api.session.setLanguage(defaultLang, lng);
+      changeLanguage(defaultLang);
     } else {
       listenSnipCart();
     }
-  }, [props, dispatch]);
+  }, [props, dispatch, defaultLang, locales]);
   return /*#__PURE__*/React.createElement(SnipCartContext.Provider, {
-    value: state
+    value: {
+      state: state,
+      changeLanguage: changeLanguage
+    }
   }, props.children);
 };
 
