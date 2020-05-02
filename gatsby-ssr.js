@@ -56,3 +56,23 @@ exports.onRenderBody = function (_ref, pluginOptions) {
   })];
   return setPostBodyComponents(components);
 };
+/**
+ * wrapp app with provider for dispatch cart and customer infos
+ */
+
+
+exports.wrapRootElement = function (_ref2, pluginOptions) {
+  var element = _ref2.element;
+
+  if (pluginOptions === void 0) {
+    pluginOptions = {};
+  }
+
+  var _options = (0, _extends2.default)({}, {
+    version: "3.0.12",
+    locales: {},
+    defaultLang: "en"
+  }, {}, pluginOptions);
+
+  return /*#__PURE__*/React.createElement(SnipCartProvider, _options, element);
+};

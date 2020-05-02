@@ -1,6 +1,7 @@
 const React = require("react");
 const SnipStyles = require("./components/SnipStyles");
 const SnipCart = require("./components/SnipCart");
+const SnipCartProvider = require("./components/SnipCartProvider").default;
 
 /**
  * insert script, style and tag in body on ssr render
