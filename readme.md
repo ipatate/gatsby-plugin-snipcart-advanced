@@ -30,10 +30,16 @@ module.exports = {
         resolve: `gatsby-plugin-snipcart-advanced`,
         options: {
             version: '3.0.12',
-            lang: 'fr',
+            defaultLang: 'fr',
             currency: 'eur',
             openCartOnAdd: false,
-            locales: {},
+            locales: {
+              fr: {
+                actions: {
+                  checkout: 'Valider le panier',
+                },
+              }
+            },
             innerHTML: `
             <billing section="bottom">
                 ...
@@ -49,10 +55,10 @@ module.exports = {
 Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.com/v3)
 
 - version : define version of snipcart library
-- lang : define language
+- defaultLang : define default language
 - currency : define currency
 - openCartOnAdd : define if the "snipcart" library opens the cart when user clicks on "add to cart" button
-- locales : object of locales string
+- locales : object of locales string. First level of keys is lang key. Example: {fr: {...}}
   localisation files is here => [https://github.com/snipcart/snipcart-l10n](https://github.com/snipcart/snipcart-l10n)
 - innerHTML : code for override snipcart element
   customization doc => [https://docs.snipcart.com/v3/setup/customization](https://docs.snipcart.com/v3/setup/customization))
@@ -61,7 +67,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 Default values :
 
 - version : 3.0.12
-- lang : "en"
+- defaultLang : "en"
 - currency : "usd"
 - openCartOnAdd : true
 - locales : {}
@@ -187,3 +193,7 @@ const AddCartModal = () => {
 
   export default AddCartModal;
 ```
+
+## TODO
+
+- Add validation on plugin options

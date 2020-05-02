@@ -20,7 +20,7 @@ var SnipCartProvider = function SnipCartProvider(props) {
 
 
   React.useEffect(function () {
-    var lang = props.lang,
+    var defaultLang = props.defaultLang,
         locales = props.locales;
 
     var listenSnipCart = function listenSnipCart() {
@@ -29,7 +29,8 @@ var SnipCartProvider = function SnipCartProvider(props) {
           type: 'setReady',
           payload: true
         });
-        window.Snipcart.api.session.setLanguage(lang, locales);
+        var lng = locales[defaultLang] || {};
+        window.Snipcart.api.session.setLanguage(defaultLang, lng);
       });
     };
 
@@ -38,7 +39,8 @@ var SnipCartProvider = function SnipCartProvider(props) {
         type: 'setReady',
         payload: true
       });
-      window.Snipcart.api.session.setLanguage(lang, locales);
+      var lng = locales[defaultLang] || {};
+      window.Snipcart.api.session.setLanguage(defaultLang, lng);
     } else {
       listenSnipCart();
     }
@@ -51,7 +53,7 @@ var SnipCartProvider = function SnipCartProvider(props) {
 SnipCartProvider.defaultProps = {
   version: '3.0.12',
   locales: {},
-  lang: 'en'
+  defaultLang: 'en'
 };
 var _default = SnipCartProvider;
 exports.default = _default;

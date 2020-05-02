@@ -8,17 +8,19 @@ const SnipCartProvider = props => {
   const [state, dispatch] = useStore();
   // add style/script and listen snipcart
   React.useEffect(() => {
-    const {lang, locales} = props;
+    const {defaultLang, locales} = props;
     const listenSnipCart = () => {
       document.addEventListener('snipcart.ready', () => {
         dispatch({type: 'setReady', payload: true});
-        window.Snipcart.api.session.setLanguage(lang, locales);
+        const lng = locales[defaultLang] || {};
+        window.Snipcart.api.session.setLanguage(defaultLang, lng);
       });
     };
 
     if (window.Snipcart !== undefined) {
       dispatch({type: 'setReady', payload: true});
-      window.Snipcart.api.session.setLanguage(lang, locales);
+      const lng = locales[defaultLang] || {};
+      window.Snipcart.api.session.setLanguage(defaultLang, lng);
     } else {
       listenSnipCart();
     }
@@ -34,7 +36,7 @@ const SnipCartProvider = props => {
 SnipCartProvider.defaultProps = {
   version: '3.0.12',
   locales: {},
-  lang: 'en',
+  defaultLang: 'en',
 };
 
 export default SnipCartProvider;
