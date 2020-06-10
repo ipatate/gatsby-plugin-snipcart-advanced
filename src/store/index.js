@@ -38,6 +38,9 @@ export const useStore = () => {
       const listenSnipCart = () => {
         const { customer, cart } = Snipcart.store.getState();
         // get quantity in cart
+        // changed after v 3.0.12
+        const items =
+          cart.items.length !== undefined ? cart.items : cart.items.items;
         dispatch({
           type: "setQuantity",
           payload: cart.items.reduce((total, item) => total + item.quantity, 0),

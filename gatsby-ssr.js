@@ -9,6 +9,8 @@ var React = require("react");
 var SnipStyles = require("./components/SnipStyles");
 
 var SnipCart = require("./components/SnipCart");
+
+var SnipCartProvider = require("./components/SnipCartProvider").default;
 /**
  * insert script, style and tag in body on ssr render
  * @param options : {currency, version}
