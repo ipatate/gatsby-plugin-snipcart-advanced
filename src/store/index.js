@@ -43,7 +43,7 @@ export const useStore = () => {
           cart.items.length !== undefined ? cart.items : cart.items.items;
         dispatch({
           type: "setQuantity",
-          payload: cart.items.reduce((total, item) => total + item.quantity, 0),
+          payload: items.reduce((total, item) => total + item.quantity, 0),
         });
         // connected or not
         dispatch({
