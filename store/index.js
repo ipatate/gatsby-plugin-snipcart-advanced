@@ -69,8 +69,10 @@ var useStore = function useStore() {
         var _Snipcart$store$getSt = Snipcart.store.getState(),
             customer = _Snipcart$store$getSt.customer,
             cart = _Snipcart$store$getSt.cart; // get quantity in cart
+        // changed after v 3.0.12
 
 
+        var items = cart.items.length !== undefined ? cart.items : cart.items.items;
         dispatch({
           type: "setQuantity",
           payload: cart.items.reduce(function (total, item) {
