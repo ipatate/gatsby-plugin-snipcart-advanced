@@ -1,5 +1,5 @@
 const React = require("react");
-const SnipStyles = require("./components/SnipStyles");
+const SnipcartStyles = require("./components/SnipcartStyles");
 const Snipcart = require("./components/Snipcart");
 const SnipcartProvider = require("./components/SnipcartProvider").default;
 
@@ -34,7 +34,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
       openCartOnAdd={_options.openCartOnAdd}
     />,
     // insert style
-    <SnipStyles key="snipcart-style" version={_options.version} />,
+    <SnipcartStyles key="snipcart-style" version={_options.version} />,
     // insert script
     <script
       key="snipcart-script"
