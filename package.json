@@ -2,7 +2,7 @@
   "name": "gatsby-plugin-snipcart-advanced",
   "main": "gatsby-ssr.js",
   "version": "0.0.8",
-  "description": "Gatsby JS Plugin for SnipCart V3",
+  "description": "Gatsby JS Plugin for Snipcart V3",
   "keywords": [
     "gatsby",
     "gatsby-plugin",

@@ -4,7 +4,7 @@ var React = require('react');
 
 var GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
 
-var SnipCart = function SnipCart(_ref) {
+var Snipcart = function Snipcart(_ref) {
   var currency = _ref.currency,
       innerHTML = _ref.innerHTML,
       openCartOnAdd = _ref.openCartOnAdd;
@@ -20,9 +20,9 @@ var SnipCart = function SnipCart(_ref) {
   });
 };
 
-SnipCart.defaultProps = {
+Snipcart.defaultProps = {
   currency: 'usd',
   innerHTML: '',
   openCartOnAdd: true
 };
-module.exports = SnipCart;
+module.exports = Snipcart;

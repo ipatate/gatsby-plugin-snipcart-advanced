@@ -1,7 +1,7 @@
 const React = require("react");
-const SnipStyles = require("./components/SnipStyles");
-const SnipCart = require("./components/SnipCart");
-const SnipCartProvider = require("./components/SnipCartProvider").default;
+const SnipcartStyles = require("./components/SnipcartStyles");
+const Snipcart = require("./components/Snipcart");
+const SnipcartProvider = require("./components/SnipcartProvider").default;
 
 /**
  * insert script, style and tag in body on ssr render
@@ -27,14 +27,14 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
     ...pluginOptions,
   };
   const components = [
-    <SnipCart
+    <Snipcart
       key="snipcart"
       innerHTML={_options.innerHTML}
       currency={_options.currency}
       openCartOnAdd={_options.openCartOnAdd}
     />,
     // insert style
-    <SnipStyles key="snipcart-style" version={_options.version} />,
+    <SnipcartStyles key="snipcart-style" version={_options.version} />,
     // insert script
     <script
       key="snipcart-script"
@@ -60,5 +60,5 @@ exports.wrapRootElement = ({ element }, pluginOptions = {}) => {
     },
     ...pluginOptions,
   };
-  return <SnipCartProvider {..._options}>{element}</SnipCartProvider>;
+  return <SnipcartProvider {..._options}>{element}</SnipcartProvider>;
 };

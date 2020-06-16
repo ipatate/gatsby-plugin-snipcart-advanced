@@ -7,13 +7,13 @@ var React = require('react');
 
 var _require = require('../store'),
     useStore = _require.useStore,
-    SnipCartContext = _require.SnipCartContext;
+    SnipcartContext = _require.SnipcartContext;
 /**
  * @param props : {currency, version}
  */
 
 
-var SnipCartProvider = function SnipCartProvider(props) {
+var SnipcartProvider = function SnipcartProvider(props) {
   var _useStore = useStore(),
       state = _useStore[0],
       dispatch = _useStore[1];
@@ -27,7 +27,7 @@ var SnipCartProvider = function SnipCartProvider(props) {
   };
 
   React.useEffect(function () {
-    var listenSnipCart = function listenSnipCart() {
+    var listenSnipcart = function listenSnipcart() {
       document.addEventListener('snipcart.ready', function () {
         dispatch({
           type: 'setReady',
@@ -44,10 +44,10 @@ var SnipCartProvider = function SnipCartProvider(props) {
       });
       changeLanguage(defaultLang);
     } else {
-      listenSnipCart();
+      listenSnipcart();
     }
   }, [props, dispatch, defaultLang, locales]);
-  return /*#__PURE__*/React.createElement(SnipCartContext.Provider, {
+  return /*#__PURE__*/React.createElement(SnipcartContext.Provider, {
     value: {
       state: state,
       changeLanguage: changeLanguage
@@ -55,10 +55,10 @@ var SnipCartProvider = function SnipCartProvider(props) {
   }, props.children);
 };
 
-SnipCartProvider.defaultProps = {
+SnipcartProvider.defaultProps = {
   version: '3.0.12',
   locales: {},
   defaultLang: 'en'
 };
-var _default = SnipCartProvider;
+var _default = SnipcartProvider;
 exports.default = _default;

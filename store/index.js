@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.useStore = exports.SnipCartContext = exports.initialState = void 0;
+exports.useStore = exports.SnipcartContext = exports.initialState = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
@@ -18,8 +18,8 @@ var initialState = {
 }; // create context for dispatch
 
 exports.initialState = initialState;
-var SnipCartContext = React.createContext(initialState);
-exports.SnipCartContext = SnipCartContext;
+var SnipcartContext = React.createContext(initialState);
+exports.SnipcartContext = SnipcartContext;
 
 var reducer = function reducer(state, action) {
   switch (state, action.type) {
@@ -65,7 +65,7 @@ var useStore = function useStore() {
 
     if (Snipcart && state.ready === true) {
       // update state infos on change
-      var listenSnipCart = function listenSnipCart() {
+      var listenSnipcart = function listenSnipcart() {
         var _Snipcart$store$getSt = Snipcart.store.getState(),
             customer = _Snipcart$store$getSt.customer,
             cart = _Snipcart$store$getSt.cart; // get quantity in cart
@@ -97,9 +97,9 @@ var useStore = function useStore() {
       }; // listen store update
 
 
-      var unsubscribe = Snipcart.store.subscribe(listenSnipCart); // call first
+      var unsubscribe = Snipcart.store.subscribe(listenSnipcart); // call first
 
-      listenSnipCart();
+      listenSnipcart();
       return function () {
         return unsubscribe();
       };

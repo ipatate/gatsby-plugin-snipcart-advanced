@@ -8,9 +8,9 @@ var React = require("react");
 
 var SnipStyles = require("./components/SnipStyles");
 
-var SnipCart = require("./components/SnipCart");
+var Snipcart = require("./components/Snipcart");
 
-var SnipCartProvider = require("./components/SnipCartProvider").default;
+var SnipcartProvider = require("./components/SnipcartProvider").default;
 /**
  * insert script, style and tag in body on ssr render
  * @param options : {currency, version}
@@ -35,7 +35,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     openCartOnAdd: true
   }, {}, pluginOptions);
 
-  var components = [/*#__PURE__*/React.createElement(SnipCart, {
+  var components = [/*#__PURE__*/React.createElement(Snipcart, {
     key: "snipcart",
     innerHTML: _options.innerHTML,
     currency: _options.currency,
@@ -76,5 +76,5 @@ exports.wrapRootElement = function (_ref2, pluginOptions) {
     defaultLang: "en"
   }, {}, pluginOptions);
 
-  return /*#__PURE__*/React.createElement(SnipCartProvider, _options, element);
+  return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };
