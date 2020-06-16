@@ -75,7 +75,7 @@ var useStore = function useStore() {
         var items = cart.items.length !== undefined ? cart.items : cart.items.items;
         dispatch({
           type: "setQuantity",
-          payload: cart.items.reduce(function (total, item) {
+          payload: items.reduce(function (total, item) {
             return total + item.quantity;
           }, 0)
         }); // connected or not
