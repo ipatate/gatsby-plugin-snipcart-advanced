@@ -9,7 +9,7 @@ export const initialState = {
 };
 
 // create context for dispatch
-export const SnipCartContext = React.createContext(initialState);
+export const SnipcartContext = React.createContext(initialState);
 
 const reducer = (state, action) => {
   switch ((state, action.type)) {
@@ -35,7 +35,7 @@ export const useStore = () => {
     const { Snipcart } = window;
     if (Snipcart && state.ready === true) {
       // update state infos on change
-      const listenSnipCart = () => {
+      const listenSnipcart = () => {
         const { customer, cart } = Snipcart.store.getState();
         // get quantity in cart
         // changed after v 3.0.12
@@ -62,9 +62,9 @@ export const useStore = () => {
         });
       };
       // listen store update
-      const unsubscribe = Snipcart.store.subscribe(listenSnipCart);
+      const unsubscribe = Snipcart.store.subscribe(listenSnipcart);
       // call first
-      listenSnipCart();
+      listenSnipcart();
       return () => unsubscribe();
     }
   }, [state.ready, dispatch]);

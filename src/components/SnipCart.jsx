@@ -2,7 +2,7 @@ const React = require('react');
 
 const GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
 
-const SnipCart = ({currency, innerHTML, openCartOnAdd}) => (
+const Snipcart = ({currency, innerHTML, openCartOnAdd}) => (
   <div
     hidden
     id="snipcart"
@@ -17,10 +17,10 @@ const SnipCart = ({currency, innerHTML, openCartOnAdd}) => (
   />
 );
 
-SnipCart.defaultProps = {
+Snipcart.defaultProps = {
   currency: 'usd',
   innerHTML: '',
   openCartOnAdd: true,
 };
 
-module.exports = SnipCart;
+module.exports = Snipcart;

@@ -1,4 +1,4 @@
-# Gatsby JS plugin for SnipCart V3 with advanced settings
+# Gatsby JS plugin for Snipcart V3 with advanced settings
 
 [Snipcart](https://snipcart.com/)
 
@@ -15,6 +15,7 @@ This plugin includes a Context for quantity in cart and detects if user is logge
 Set "GATSBY_SNIPCART_API_KEY" variable in environment
 
 The plugin use :
+
 ```js
 process.env.GATSBY_SNIPCART_API_KEY
 ```
@@ -42,7 +43,7 @@ module.exports = {
             },
             innerHTML: `
             <billing section="bottom">
-                ...
+                <!-- Customization goes here -->
             </billing>`,
         },
     },
@@ -63,7 +64,6 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 - innerHTML : code for override snipcart element
   customization doc => [https://docs.snipcart.com/v3/setup/customization](https://docs.snipcart.com/v3/setup/customization))
 
-
 Default values :
 
 - version : 3.0.12
@@ -73,30 +73,30 @@ Default values :
 - locales : {}
 - innerHTML : ''
 
-
 ## use the context in component
 
 Use the context of the Snipcart plugin. You have 2 values in the context :
+
 - state (object of value)
 - changeLanguage (function)
 
 When you use the changeLanguage function, it use the locales string define in config of plugin.
 
 ```jsx
-  import {SnipCartContext} from 'gatsby-plugin-snipcart-advanced/context';
+  import {SnipcartContext} from 'gatsby-plugin-snipcart-advanced/context';
 
-  const {state, changeLanguage} = useContext(SnipCartContext);
+  const {state, changeLanguage} = useContext(SnipcartContext);
 
   changeLanguage('en');
 ```
 
-### Example of component :
+### Example of component:
 
 ```jsx
-import {SnipCartContext} from 'gatsby-plugin-snipcart-advanced/context';
+import {SnipcartContext} from 'gatsby-plugin-snipcart-advanced/context';
 
 const MyComponent = () => {
-  const {state} = useContext(SnipCartContext);
+  const {state} = useContext(SnipcartContext);
   const {userStatus, cartQuantity} = state;
 return (
     <div>
@@ -122,6 +122,7 @@ return (
 The values come from where you want : markdown files, api...
 
 Example of button for your product component:
+
 ```jsx
 <button
     className="snipcart-add-item"

@@ -1,2 +1,2 @@
 // export context
-export { SnipCartContext } from "./store/index";
+export { SnipcartContext } from "./store/index";

@@ -6,7 +6,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var React = require('react');
 
-var SnipCartProvider = require('./components/SnipCartProvider').default;
+var SnipcartProvider = require('./components/SnipcartProvider').default;
 /**
  * wrapp app with provider for dispatch cart and customer infos
  */
@@ -25,5 +25,5 @@ exports.wrapRootElement = function (_ref, pluginOptions) {
     defaultLang: 'en'
   }, {}, pluginOptions);
 
-  return /*#__PURE__*/React.createElement(SnipCartProvider, _options, element);
+  return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };

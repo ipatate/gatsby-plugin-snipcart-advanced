@@ -1,5 +1,5 @@
 const React = require('react');
-const SnipCartProvider = require('./components/SnipCartProvider').default;
+const SnipcartProvider = require('./components/SnipcartProvider').default;
 
 /**
  * wrapp app with provider for dispatch cart and customer infos
@@ -13,5 +13,5 @@ exports.wrapRootElement = ({element}, pluginOptions = {}) => {
     },
     ...pluginOptions,
   };
-  return <SnipCartProvider {..._options}>{element}</SnipCartProvider>;
+  return <SnipcartProvider {..._options}>{element}</SnipcartProvider>;
 };
