@@ -7,7 +7,7 @@ const SnipcartProvider = require('./components/SnipcartProvider').default;
 exports.wrapRootElement = ({element}, pluginOptions = {}) => {
   const _options = {
     ...{
-      version: '3.0.12',
+      version: '3.0.15',
       locales: {},
       defaultLang: 'en',
     },

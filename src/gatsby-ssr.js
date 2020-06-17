@@ -11,7 +11,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
 
   const _options = {
     ...{
-      version: "3.0.12",
+      version: "3.0.15",
       innerHTML: "",
       openCartOnAdd: true,
     },
@@ -46,7 +46,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
 exports.wrapRootElement = ({ element }, pluginOptions = {}) => {
   const _options = {
     ...{
-      version: "3.0.12",
+      version: "3.0.15",
       locales: {},
       defaultLang: "en",
     },
