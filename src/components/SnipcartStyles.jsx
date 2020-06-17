@@ -1,6 +1,6 @@
 const React = require('react');
 
-const SnipStyles = ({version}) => {
+const SnipcartStyles = ({version}) => {
   return (
     <>
       <link
@@ -26,4 +26,4 @@ const SnipStyles = ({version}) => {
   );
 };
 
-module.exports = SnipStyles;
+module.exports = SnipcartStyles;
