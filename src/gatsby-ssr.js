@@ -8,19 +8,10 @@ const SnipcartProvider = require("./components/SnipcartProvider").default;
  * @param options : {currency, version}
  */
 exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
-  if (
-    !process.env.GATSBY_SNIPCART_API_KEY &&
-    process.env.NODE_ENV === "production"
-  ) {
-    throw new Error(
-      `Snipcart API Key "GATSBY_SNIPCART_API_KEY" is not defined. Use .env.development for develop mode and plateform env variable for production`
-    );
-    return null;
-  }
 
   const _options = {
     ...{
-      version: "3.0.12",
+      version: "3.0.15",
       innerHTML: "",
       openCartOnAdd: true,
     },
@@ -29,6 +20,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
   const components = [
     <Snipcart
       key="snipcart"
+      publicApiKey={_options.publicApiKey}
       innerHTML={_options.innerHTML}
       currency={_options.currency}
       openCartOnAdd={_options.openCartOnAdd}
@@ -54,7 +46,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
 exports.wrapRootElement = ({ element }, pluginOptions = {}) => {
   const _options = {
     ...{
-      version: "3.0.12",
+      version: "3.0.15",
       locales: {},
       defaultLang: "en",
     },

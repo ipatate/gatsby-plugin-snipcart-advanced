@@ -30,7 +30,7 @@ module.exports = {
     {
         resolve: `gatsby-plugin-snipcart-advanced`,
         options: {
-            version: '3.0.12',
+            version: '3.0.15',
             defaultLang: 'fr',
             currency: 'eur',
             openCartOnAdd: false,
@@ -66,7 +66,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 
 Default values :
 
-- version : 3.0.12
+- version : 3.0.15
 - defaultLang : "en"
 - currency : "usd"
 - openCartOnAdd : true

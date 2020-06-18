@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var SnipStyles = function SnipStyles(_ref) {
+var SnipcartStyles = function SnipcartStyles(_ref) {
   var version = _ref.version;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("link", {
     rel: "preload",
@@ -19,4 +19,4 @@ var SnipStyles = function SnipStyles(_ref) {
   })));
 };
 
-module.exports = SnipStyles;
+module.exports = SnipcartStyles;
