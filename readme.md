@@ -12,7 +12,8 @@ This plugin includes a Context for quantity in cart and detects if user is logge
 
 ## API KEY
 
-Set "GATSBY_SNIPCART_API_KEY" variable in environment
+Set the Snipcart public api key in options plugin or use "GATSBY_SNIPCART_API_KEY" variable in environment.
+If you want use different api key by environment, use it in environment variable.
 
 The plugin use :
 
@@ -31,6 +32,7 @@ module.exports = {
         resolve: `gatsby-plugin-snipcart-advanced`,
         options: {
             version: '3.0.15',
+            publicApiKey: '#####', // use public api key here or in environment variable
             defaultLang: 'fr',
             currency: 'eur',
             openCartOnAdd: false,
@@ -56,6 +58,7 @@ module.exports = {
 Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.com/v3)
 
 - version : define version of snipcart library
+- publicApiKey: Snipcart public api key
 - defaultLang : define default language
 - currency : define currency
 - openCartOnAdd : define if the "snipcart" library opens the cart when user clicks on "add to cart" button
@@ -211,6 +214,14 @@ const AddCartModal = () => {
 
   export default AddCartModal;
 ```
+
+## Version
+
+1.0.0 :
+- Added possibility of use public key api Snipcart from plugin options or from environment variables
+- Use SnipcartContext instead of SnipCartContext
+
+
 
 ## TODO
 
