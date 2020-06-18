@@ -3,12 +3,13 @@ const SnipcartStyles = require("./components/SnipcartStyles");
 const Snipcart = require("./components/Snipcart");
 const SnipcartProvider = require("./components/SnipcartProvider").default;
 
+const GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
+
 /**
  * insert script, style and tag in body on ssr render
  * @param options : {currency, version}
  */
 exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
-
   const _options = {
     ...{
       version: "3.0.15",
@@ -17,10 +18,20 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
     },
     ...pluginOptions,
   };
+  // find public api key in options plugin or environment variable
+  const publicApiKey = GATSBY_SNIPCART_API_KEY || _options.publicApiKey;
+
+  if (!publicApiKey) {
+    throw new Error(
+      `Snipcart public API Key is not defined. Insert in plugin options the "publicApiKey" parameter or use GATSBY_SNIPCART_API_KEY in environment variable`
+    );
+    return null;
+  }
+
   const components = [
     <Snipcart
       key="snipcart"
-      publicApiKey={_options.publicApiKey}
+      publicApiKey={publicApiKey}
       innerHTML={_options.innerHTML}
       currency={_options.currency}
       openCartOnAdd={_options.openCartOnAdd}

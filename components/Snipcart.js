@@ -1,8 +1,6 @@
 "use strict";
 
-var React = require('react');
-
-var GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
+var React = require("react");
 
 var Snipcart = function Snipcart(_ref) {
   var publicApiKey = _ref.publicApiKey,
@@ -14,7 +12,7 @@ var Snipcart = function Snipcart(_ref) {
     id: "snipcart",
     "data-api-key": publicApiKey,
     "data-currency": currency,
-    "data-config-add-product-behavior": openCartOnAdd === false ? 'none' : null,
+    "data-config-add-product-behavior": openCartOnAdd === false ? "none" : null,
     dangerouslySetInnerHTML: {
       __html: "\n        " + innerHTML + "\n      "
     }
@@ -22,8 +20,8 @@ var Snipcart = function Snipcart(_ref) {
 };
 
 Snipcart.defaultProps = {
-  currency: 'usd',
-  innerHTML: '',
+  currency: "usd",
+  innerHTML: "",
   openCartOnAdd: true
 };
 module.exports = Snipcart;
