@@ -15,6 +15,9 @@ This plugin includes a Context for quantity in cart and detects if user is logge
 Set the Snipcart public api key in options plugin or use "GATSBY_SNIPCART_API_KEY" variable in environment.
 If you want use different api key by environment, use it in environment variable.
 
+*The environment variable is prioritary on plugin option parameter.*
+
+
 The plugin use :
 
 ```js

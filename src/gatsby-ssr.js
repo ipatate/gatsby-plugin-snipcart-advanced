@@ -19,9 +19,9 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
     ...pluginOptions,
   };
   // find public api key in options plugin or environment variable
-  const publicApiKey = _options.publicApiKey || GATSBY_SNIPCART_API_KEY;
+  const publicApiKey = GATSBY_SNIPCART_API_KEY || _options.publicApiKey;
 
-  if (!publicApiKey && process.env.NODE_ENV === "production") {
+  if (!publicApiKey) {
     throw new Error(
       `Snipcart public API Key is not defined. Insert in plugin options the "publicApiKey" parameter or use GATSBY_SNIPCART_API_KEY in environment variable`
     );
