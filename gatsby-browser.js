@@ -23,7 +23,7 @@ exports.wrapRootElement = function (_ref, pluginOptions) {
     version: '3.0.15',
     locales: {},
     defaultLang: 'en'
-  }, {}, pluginOptions);
+  }, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };
