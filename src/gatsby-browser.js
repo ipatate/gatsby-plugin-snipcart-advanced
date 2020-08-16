@@ -1,15 +1,15 @@
-const React = require('react');
-const SnipcartProvider = require('./components/SnipcartProvider').default;
+const React = require("react");
+const SnipcartProvider = require("./components/SnipcartProvider").default;
 
 /**
  * wrapp app with provider for dispatch cart and customer infos
  */
-exports.wrapRootElement = ({element}, pluginOptions = {}) => {
+exports.wrapRootElement = ({ element }, pluginOptions = {}) => {
   const _options = {
     ...{
-      version: '3.0.15',
+      version: "3.0.19",
       locales: {},
-      defaultLang: 'en',
+      defaultLang: "en",
     },
     ...pluginOptions,
   };

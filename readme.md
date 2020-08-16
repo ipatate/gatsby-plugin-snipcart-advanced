@@ -63,6 +63,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 - version : define version of snipcart library
 - publicApiKey: Snipcart public api key
 - defaultLang : define default language
+- provideDefaultCurrency: Facilitates multi-currency carts. Set to false to prevent a default currency from being specified, resetting the currency on an active cart session
 - currency : define currency
 - openCartOnAdd : define if the "snipcart" library opens the cart when user clicks on "add to cart" button
 - locales : object of locales string. First level of keys is lang key. Example: {fr: {...}}
