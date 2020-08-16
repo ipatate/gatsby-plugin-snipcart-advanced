@@ -12,7 +12,7 @@ const GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
 exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
   const _options = {
     ...{
-      version: "3.0.15",
+      version: "3.0.19",
       innerHTML: "",
       openCartOnAdd: true,
     },
@@ -30,7 +30,8 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
 
   // Use a default currency value by default. True if plugin option is undefined
   // or defined as true. False only if plugin option is defined as false.
-  const provideDefaultCurrency = (_options.provideDefaultCurrency !== false) ? true : false
+  const provideDefaultCurrency =
+    _options.provideDefaultCurrency !== false ? true : false;
 
   const components = [
     <Snipcart
