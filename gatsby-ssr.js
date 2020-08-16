@@ -29,7 +29,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     version: "3.0.15",
     innerHTML: "",
     openCartOnAdd: true
-  }, {}, pluginOptions); // find public api key in options plugin or environment variable
+  }, pluginOptions); // find public api key in options plugin or environment variable
 
 
   var publicApiKey = GATSBY_SNIPCART_API_KEY || _options.publicApiKey;
@@ -37,13 +37,17 @@ exports.onRenderBody = function (_ref, pluginOptions) {
   if (!publicApiKey) {
     throw new Error("Snipcart public API Key is not defined. Insert in plugin options the \"publicApiKey\" parameter or use GATSBY_SNIPCART_API_KEY in environment variable");
     return null;
-  }
+  } // Use a default currency value by default. True if plugin option is undefined
+  // or defined as true. False only if plugin option is defined as false.
 
+
+  var provideDefaultCurrency = _options.provideDefaultCurrency !== false ? true : false;
   var components = [/*#__PURE__*/React.createElement(Snipcart, {
     key: "snipcart",
     publicApiKey: publicApiKey,
-    innerHTML: _options.innerHTML,
-    currency: _options.currency,
+    innerHTML: _options.innerHTML // Only pass currency value if using default currency
+    ,
+    currency: provideDefaultCurrency ? _options.currency : null,
     openCartOnAdd: _options.openCartOnAdd
   }),
   /*#__PURE__*/
@@ -79,7 +83,7 @@ exports.wrapRootElement = function (_ref2, pluginOptions) {
     version: "3.0.15",
     locales: {},
     defaultLang: "en"
-  }, {}, pluginOptions);
+  }, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };
