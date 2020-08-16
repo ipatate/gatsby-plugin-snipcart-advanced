@@ -26,10 +26,10 @@ exports.onRenderBody = function (_ref, pluginOptions) {
   }
 
   var _options = (0, _extends2.default)({}, {
-    version: "3.0.15",
+    version: "3.0.19",
     innerHTML: "",
     openCartOnAdd: true
-  }, pluginOptions); // find public api key in options plugin or environment variable
+  }, {}, pluginOptions); // find public api key in options plugin or environment variable
 
 
   var publicApiKey = GATSBY_SNIPCART_API_KEY || _options.publicApiKey;
@@ -83,7 +83,7 @@ exports.wrapRootElement = function (_ref2, pluginOptions) {
     version: "3.0.15",
     locales: {},
     defaultLang: "en"
-  }, pluginOptions);
+  }, {}, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };

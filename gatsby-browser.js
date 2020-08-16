@@ -4,9 +4,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var React = require('react');
+var React = require("react");
 
-var SnipcartProvider = require('./components/SnipcartProvider').default;
+var SnipcartProvider = require("./components/SnipcartProvider").default;
 /**
  * wrapp app with provider for dispatch cart and customer infos
  */
@@ -20,10 +20,10 @@ exports.wrapRootElement = function (_ref, pluginOptions) {
   }
 
   var _options = (0, _extends2.default)({}, {
-    version: '3.0.15',
+    version: "3.0.19",
     locales: {},
-    defaultLang: 'en'
-  }, pluginOptions);
+    defaultLang: "en"
+  }, {}, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };
