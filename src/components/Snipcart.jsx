@@ -7,7 +7,7 @@ const Snipcart = ({ publicApiKey, currency, innerHTML, openCartOnAdd, useSideCar
     data-api-key={publicApiKey}
     data-currency={currency}
     data-config-add-product-behavior={openCartOnAdd === false ? "none" : null}
-    data-config-modal-style={useSideCart === false ? "side" : null}
+    data-config-modal-style={useSideCart === true ? "side" : null}
     dangerouslySetInnerHTML={{
       __html: `
         ${innerHTML}
