@@ -28,7 +28,8 @@ exports.onRenderBody = function (_ref, pluginOptions) {
   var _options = (0, _extends2.default)({}, {
     version: "3.0.19",
     innerHTML: "",
-    openCartOnAdd: true
+    openCartOnAdd: true,
+    useSideCart: false,
   }, {}, pluginOptions); // find public api key in options plugin or environment variable
 
 
@@ -48,7 +49,8 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     innerHTML: _options.innerHTML // Only pass currency value if using default currency
     ,
     currency: provideDefaultCurrency ? _options.currency : null,
-    openCartOnAdd: _options.openCartOnAdd
+    openCartOnAdd: _options.openCartOnAdd,
+    useSideCart: _options.useSideCart
   }),
   /*#__PURE__*/
   // insert style
