@@ -38,7 +38,8 @@ module.exports = {
         defaultLang: "fr",
         currency: "eur",
         openCartOnAdd: false,
-        useSideCart: true, // be careful with this mode cart. The cart in this mode has a bug of scroll in firefox
+        useSideCart: true,
+        // be careful with this mode cart. The cart in this mode has a bug of scroll in firefox
         locales: {
           fr: {
             actions: {
@@ -47,7 +48,8 @@ module.exports = {
           },
         },
         templatesUrl:
-          "path on your template file. Set file in the static folder, ex: '/snipcart/index.html'", // not work on dev. Gatsby not serve html file in dev https://github.com/gatsbyjs/gatsby/issues/13072
+          "path on your template file. Set file in the static folder, ex: '/snipcart/index.html'",
+        // not work on dev. Gatsby not serve html file in dev https://github.com/gatsbyjs/gatsby/issues/13072
         innerHTML: `
             <billing section="bottom">
                 <!-- Customization goes here -->
