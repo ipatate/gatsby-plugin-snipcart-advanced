@@ -15,13 +15,12 @@ This plugin includes a Context for quantity in cart and detects if user is logge
 Set the Snipcart public api key in options plugin or use "GATSBY_SNIPCART_API_KEY" variable in environment.
 If you want use different api key by environment, use it in environment variable.
 
-*The environment variable is prioritary on plugin option parameter.*
-
+_The environment variable is prioritary on plugin option parameter._
 
 The plugin use :
 
 ```js
-process.env.GATSBY_SNIPCART_API_KEY
+process.env.GATSBY_SNIPCART_API_KEY;
 ```
 
 ## Usage
@@ -32,29 +31,29 @@ In your `gatsby-config.js` file, add:
 module.exports = {
   plugins: [
     {
-        resolve: `gatsby-plugin-snipcart-advanced`,
-        options: {
-            version: '3.0.15',
-            publicApiKey: '#####', // use public api key here or in environment variable
-            defaultLang: 'fr',
-            currency: 'eur',
-            openCartOnAdd: false,
-            useSideCart: true,
-            locales: {
-              fr: {
-                actions: {
-                  checkout: 'Valider le panier',
-                },
-              }
+      resolve: `gatsby-plugin-snipcart-advanced`,
+      options: {
+        version: "3.0.29",
+        publicApiKey: "#####", // use public api key here or in environment variable
+        defaultLang: "fr",
+        currency: "eur",
+        openCartOnAdd: false,
+        useSideCart: true, // be careful with this mode cart. The cart in this mode has a bug of scroll in firefox
+        locales: {
+          fr: {
+            actions: {
+              checkout: "Valider le panier",
             },
-            innerHTML: `
+          },
+        },
+        innerHTML: `
             <billing section="bottom">
                 <!-- Customization goes here -->
             </billing>`,
-        },
+      },
     },
   ],
-}
+};
 ```
 
 ## Options
@@ -93,24 +92,24 @@ Use the context of the Snipcart plugin. You have 2 values in the context :
 When you use the changeLanguage function, it use the locales string define in config of plugin.
 
 ```jsx
-  import {SnipcartContext} from 'gatsby-plugin-snipcart-advanced/context';
+import { SnipcartContext } from "gatsby-plugin-snipcart-advanced/context";
 
-  const {state, changeLanguage} = useContext(SnipcartContext);
+const { state, changeLanguage } = useContext(SnipcartContext);
 
-  changeLanguage('en');
+changeLanguage("en");
 ```
 
 ### Example of component:
 
 ```jsx
-import {SnipcartContext} from 'gatsby-plugin-snipcart-advanced/context';
+import { SnipcartContext } from "gatsby-plugin-snipcart-advanced/context";
 
 const MyComponent = () => {
-  const {state} = useContext(SnipcartContext);
-  const {userStatus, cartQuantity} = state;
-return (
+  const { state } = useContext(SnipcartContext);
+  const { userStatus, cartQuantity } = state;
+  return (
     <div>
-      {userStatus === 'SignedOut' ? (
+      {userStatus === "SignedOut" ? (
         <button className="snipcart-customer-signin">
           <span>Se connecter</span>
         </button>
@@ -124,7 +123,7 @@ return (
       </button>
     </div>
   );
-}
+};
 ```
 
 ## Usage of snipcart for add a product in cart
@@ -135,100 +134,97 @@ Example of button for your product component:
 
 ```jsx
 <button
-    className="snipcart-add-item"
-    data-item-id={id}
-    data-item-price={price}
-    data-item-url={slug}
-    data-item-description={product.excerpt}
-    data-item-image={image && image.publicURL}
-    data-item-name={title}
-    data-item-quantity="1"
-    data-item-taxes={tva}
-    disabled={_stock === 0 ? true : false}
+  className="snipcart-add-item"
+  data-item-id={id}
+  data-item-price={price}
+  data-item-url={slug}
+  data-item-description={product.excerpt}
+  data-item-image={image && image.publicURL}
+  data-item-name={title}
+  data-item-quantity="1"
+  data-item-taxes={tva}
+  disabled={_stock === 0 ? true : false}
 >
-    Add to cart
+  Add to cart
 </button>
 ```
 
 ## Example of component for display a dialog alert after click on "Add to cart" button (if you set "openCartOnAdd" to false)
 
 ```jsx
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 const AddCartModal = () => {
-    const [open, toggleOpen] = useState(false);
-    const [item, setItem] = useState({});
-    // hidden button for open the cart
-    const bt_cart = useRef();
-    // mask under modal
-    const mask = useRef();
-    useEffect(() => {
-      const {Snipcart} = window;
-      if (!Snipcart) return;
-      // open modal on snipcart event add item on cart
-      Snipcart.events.on('item.adding', _item => {
-        setItem(_item);
-        toggleOpen(true);
-      });
-    }, []);
+  const [open, toggleOpen] = useState(false);
+  const [item, setItem] = useState({});
+  // hidden button for open the cart
+  const bt_cart = useRef();
+  // mask under modal
+  const mask = useRef();
+  useEffect(() => {
+    const { Snipcart } = window;
+    if (!Snipcart) return;
+    // open modal on snipcart event add item on cart
+    Snipcart.events.on("item.adding", (_item) => {
+      setItem(_item);
+      toggleOpen(true);
+    });
+  }, []);
 
-    return (
-      <>
-        <div
-          ref={mask}
-          className={`${open === true ? styles.show : ''} ${styles.mask}`}
-        >
-          <div
-            className={styles.add__cart}
-            role="alertdialog"
-          >
-            <button className={styles.close} onClick={() => toggleOpen(false)}>
-              <span>Close</span>
+  return (
+    <>
+      <div
+        ref={mask}
+        className={`${open === true ? styles.show : ""} ${styles.mask}`}
+      >
+        <div className={styles.add__cart} role="alertdialog">
+          <button className={styles.close} onClick={() => toggleOpen(false)}>
+            <span>Close</span>
+          </button>
+          <div className={styles.confirm}>
+            {item.name && (
+              <span>
+                <strong>
+                  {item.quantity} {item.name}
+                </strong>{" "}
+                {"added to your cart"}
+              </span>
+            )}
+          </div>
+          <div className={styles.actions}>
+            <button onClick={() => toggleOpen(false)}>
+              Continuer les achats
             </button>
-            <div className={styles.confirm}>
-              {item.name && (
-                <span>
-                  <strong>
-                    {item.quantity} {item.name}
-                  </strong>{' '}{'added to your cart'}
-                </span>
-              )}
-            </div>
-            <div className={styles.actions}>
-              <button onClick={() => toggleOpen(false)}>
-                Continuer les achats
-              </button>
-              <button
-                className={styles.got_cart}
-                onClick={() => {
-                  toggleOpen(false);
-                  bt_cart.current.click();
-                }}
-              >
-                Voir le panier
-              </button>
-            </div>
+            <button
+              className={styles.got_cart}
+              onClick={() => {
+                toggleOpen(false);
+                bt_cart.current.click();
+              }}
+            >
+              Voir le panier
+            </button>
           </div>
         </div>
-        <button
-          ref={bt_cart}
-          style={{height: 0, opacity: 0}}
-          className="snipcart-checkout"
-        ></button>
-      </>
-    );
-  };
+      </div>
+      <button
+        ref={bt_cart}
+        style={{ height: 0, opacity: 0 }}
+        className="snipcart-checkout"
+      ></button>
+    </>
+  );
+};
 
-  export default AddCartModal;
+export default AddCartModal;
 ```
 
 ## Version
 
 1.0.0 :
+
 - Added possibility of use public key api Snipcart from plugin options or from environment variables
 - Use SnipcartContext instead of SnipCartContext
-
-
 
 ## TODO
 
