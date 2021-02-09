@@ -29,7 +29,8 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     version: "3.0.19",
     innerHTML: "",
     openCartOnAdd: true,
-    useSideCart: false
+    useSideCart: false,
+    templatesUrl: null
   }, pluginOptions); // find public api key in options plugin or environment variable
 
 
@@ -50,7 +51,8 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     ,
     currency: provideDefaultCurrency ? _options.currency : null,
     openCartOnAdd: _options.openCartOnAdd,
-    useSideCart: _options.useSideCart
+    useSideCart: _options.useSideCart,
+    templatesUrl: _options.templatesUrl
   }),
   /*#__PURE__*/
   // insert style

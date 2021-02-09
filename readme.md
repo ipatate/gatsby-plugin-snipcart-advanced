@@ -47,7 +47,7 @@ module.exports = {
           },
         },
         templatesUrl:
-          "path on your template file. Set file in the static folder",
+          "path on your template file. Set file in the static folder, ex: '/snipcart/index.html'", // not work on dev. Gatsby not serve html file in dev https://github.com/gatsbyjs/gatsby/issues/13072
         innerHTML: `
             <billing section="bottom">
                 <!-- Customization goes here -->
