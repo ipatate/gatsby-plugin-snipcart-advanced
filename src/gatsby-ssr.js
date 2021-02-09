@@ -15,6 +15,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
       version: "3.0.19",
       innerHTML: "",
       openCartOnAdd: true,
+      useSideCart: false,
     },
     ...pluginOptions,
   };
@@ -41,6 +42,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
       // Only pass currency value if using default currency
       currency={provideDefaultCurrency ? _options.currency : null}
       openCartOnAdd={_options.openCartOnAdd}
+      useSideCart={_options.useSideCart}
     />,
     // insert style
     <SnipcartStyles key="snipcart-style" version={_options.version} />,

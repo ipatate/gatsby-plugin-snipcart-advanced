@@ -39,6 +39,7 @@ module.exports = {
             defaultLang: 'fr',
             currency: 'eur',
             openCartOnAdd: false,
+            useSideCart: true,
             locales: {
               fr: {
                 actions: {
@@ -66,6 +67,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 - provideDefaultCurrency: Facilitates multi-currency carts. Set to false to prevent a default currency from being specified, resetting the currency on an active cart session
 - currency : define currency
 - openCartOnAdd : define if the "snipcart" library opens the cart when user clicks on "add to cart" button
+- useSideCart : define if the "snipcart" library opens the cart in a side modal
 - locales : object of locales string. First level of keys is lang key. Example: {fr: {...}}
   localisation files is here => [https://github.com/snipcart/snipcart-l10n](https://github.com/snipcart/snipcart-l10n)
 - innerHTML : code for override snipcart element
@@ -77,6 +79,7 @@ Default values :
 - defaultLang : "en"
 - currency : "usd"
 - openCartOnAdd : true
+- useSideCart : false
 - locales : {}
 - innerHTML : ''
 
