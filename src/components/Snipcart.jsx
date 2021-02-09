@@ -1,6 +1,13 @@
 const React = require("react");
 
-const Snipcart = ({ publicApiKey, currency, innerHTML, openCartOnAdd, useSideCart }) => (
+const Snipcart = ({
+  publicApiKey,
+  currency,
+  innerHTML,
+  openCartOnAdd,
+  useSideCart,
+  templatesUrl,
+}) => (
   <div
     hidden
     id="snipcart"
@@ -8,6 +15,7 @@ const Snipcart = ({ publicApiKey, currency, innerHTML, openCartOnAdd, useSideCar
     data-currency={currency}
     data-config-add-product-behavior={openCartOnAdd === false ? "none" : null}
     data-config-modal-style={useSideCart === true ? "side" : null}
+    data-templates-url={{}}
     dangerouslySetInnerHTML={{
       __html: `
         ${innerHTML}
@@ -21,6 +29,7 @@ Snipcart.defaultProps = {
   innerHTML: "",
   openCartOnAdd: true,
   useSideCart: false,
+  templatesUrl: null,
 };
 
 module.exports = Snipcart;

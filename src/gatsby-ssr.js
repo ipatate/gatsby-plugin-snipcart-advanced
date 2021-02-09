@@ -16,6 +16,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
       innerHTML: "",
       openCartOnAdd: true,
       useSideCart: false,
+      templatesUrl: null,
     },
     ...pluginOptions,
   };
@@ -43,6 +44,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
       currency={provideDefaultCurrency ? _options.currency : null}
       openCartOnAdd={_options.openCartOnAdd}
       useSideCart={_options.useSideCart}
+      templatesUrl={_options.templatesUrl}
     />,
     // insert style
     <SnipcartStyles key="snipcart-style" version={_options.version} />,
