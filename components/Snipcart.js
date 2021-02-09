@@ -7,7 +7,8 @@ var Snipcart = function Snipcart(_ref) {
       currency = _ref.currency,
       innerHTML = _ref.innerHTML,
       openCartOnAdd = _ref.openCartOnAdd,
-      useSideCart = _ref.useSideCart;
+      useSideCart = _ref.useSideCart,
+      templatesUrl = _ref.templatesUrl;
   return /*#__PURE__*/React.createElement("div", {
     hidden: true,
     id: "snipcart",
@@ -15,6 +16,7 @@ var Snipcart = function Snipcart(_ref) {
     "data-currency": currency,
     "data-config-add-product-behavior": openCartOnAdd === false ? "none" : null,
     "data-config-modal-style": useSideCart === true ? "side" : null,
+    "data-templates-url": {},
     dangerouslySetInnerHTML: {
       __html: "\n        " + innerHTML + "\n      "
     }
@@ -25,6 +27,7 @@ Snipcart.defaultProps = {
   currency: "usd",
   innerHTML: "",
   openCartOnAdd: true,
-  useSideCart: false
+  useSideCart: false,
+  templatesUrl: null
 };
 module.exports = Snipcart;

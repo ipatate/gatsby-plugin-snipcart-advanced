@@ -46,6 +46,8 @@ module.exports = {
             },
           },
         },
+        templatesUrl:
+          "path on your template file. Set file in the static folder, ex: '/snipcart/index.html'", // not work on dev. Gatsby not serve html file in dev https://github.com/gatsbyjs/gatsby/issues/13072
         innerHTML: `
             <billing section="bottom">
                 <!-- Customization goes here -->
@@ -69,6 +71,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 - useSideCart : define if the "snipcart" library opens the cart in a side modal
 - locales : object of locales string. First level of keys is lang key. Example: {fr: {...}}
   localisation files is here => [https://github.com/snipcart/snipcart-l10n](https://github.com/snipcart/snipcart-l10n)
+- templatesUrl: template file for override snipcart element [https://docs.snipcart.com/v3/setup/customization#defining-templates-in-an-external-file](https://docs.snipcart.com/v3/setup/customization#defining-templates-in-an-external-file)
 - innerHTML : code for override snipcart element
   customization doc => [https://docs.snipcart.com/v3/setup/customization](https://docs.snipcart.com/v3/setup/customization))
 
@@ -79,6 +82,7 @@ Default values :
 - currency : "usd"
 - openCartOnAdd : true
 - useSideCart : false
+- templatesUrl: null
 - locales : {}
 - innerHTML : ''
 
