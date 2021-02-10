@@ -16,7 +16,7 @@ var Snipcart = function Snipcart(_ref) {
     "data-currency": currency,
     "data-config-add-product-behavior": openCartOnAdd === false ? "none" : null,
     "data-config-modal-style": useSideCart === true ? "side" : null,
-    "data-templates-url": {},
+    "data-templates-url": templatesUrl,
     dangerouslySetInnerHTML: {
       __html: "\n        " + innerHTML + "\n      "
     }
