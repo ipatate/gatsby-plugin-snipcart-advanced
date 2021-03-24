@@ -232,11 +232,11 @@ export default AddCartModal;
 - Added possibility of use public key api Snipcart from plugin options or from environment variables
 - Use SnipcartContext instead of SnipCartContext
 
-  1.0.2
+  1.0.2 :
 
 - Add provideDefaultCurrency options for multi-currency carts
 
-  1.0.3
+  1.0.3 :
 
 - Add useSideCart for open the cart in a side modal
 - Add templateURL for use templates in an external file
