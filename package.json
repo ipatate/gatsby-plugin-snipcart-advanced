@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-snipcart-advanced",
   "main": "gatsby-ssr.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gatsby JS Plugin for Snipcart V3",
   "keywords": [
     "gatsby",
@@ -21,7 +21,7 @@
     "cross-env": "^5.2.1"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0"
+    "gatsby": ">= 2.0.0"
   },
   "repository": {
     "type": "git",
