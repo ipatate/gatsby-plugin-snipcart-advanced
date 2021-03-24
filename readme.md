@@ -2,6 +2,8 @@
 
 [Snipcart](https://snipcart.com/)
 
+**Work with gatsby v2 and v3**
+
 This plugin includes a Context for quantity in cart and detects if user is logged in or not
 
 ## Install
