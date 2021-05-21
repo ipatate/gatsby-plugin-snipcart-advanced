@@ -26,7 +26,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
   }
 
   var _options = (0, _extends2.default)({}, {
-    version: "3.0.29",
+    version: "3.2.0",
     innerHTML: "",
     openCartOnAdd: true,
     useSideCart: false,
@@ -84,7 +84,7 @@ exports.wrapRootElement = function (_ref2, pluginOptions) {
   }
 
   var _options = (0, _extends2.default)({}, {
-    version: "3.0.29",
+    version: "3.2.0",
     locales: {},
     defaultLang: "en"
   }, pluginOptions);
