@@ -35,7 +35,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-snipcart-advanced`,
       options: {
-        version: "3.0.29",
+        version: "3.2.0",
         publicApiKey: "#####", // use public api key here or in environment variable
         defaultLang: "fr",
         currency: "eur",
@@ -81,7 +81,7 @@ Read the snipcart document [https://docs.snipcart.com/v3](https://docs.snipcart.
 
 Default values :
 
-- version : 3.0.29
+- version : 3.2.0
 - defaultLang : "en"
 - currency : "usd"
 - openCartOnAdd : true

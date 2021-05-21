@@ -56,7 +56,7 @@ var SnipcartProvider = function SnipcartProvider(props) {
 };
 
 SnipcartProvider.defaultProps = {
-  version: '3.0.15',
+  version: '3.2.0',
   locales: {},
   defaultLang: 'en'
 };
