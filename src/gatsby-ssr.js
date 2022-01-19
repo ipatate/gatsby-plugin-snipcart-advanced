@@ -9,7 +9,7 @@ const GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
  * insert script, style and tag in body on ssr render
  * @param options : {currency, version}
  */
-exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
+exports.onRenderBody = ({ setPostBodyComponents, pathname }, pluginOptions = {}) => {
   const _options = {
     ...{
       version: "3.0.29",
@@ -58,7 +58,7 @@ exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions = {}) => {
     ></script>,
   ];
 
-  return setPostBodyComponents(components);
+  return _options.shopPages == null || _options.shopPages.includes(pathname) ? setPostBodyComponents(components) : null;
 };
 
 /**

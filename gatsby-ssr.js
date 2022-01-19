@@ -19,7 +19,8 @@ var GATSBY_SNIPCART_API_KEY = process.env.GATSBY_SNIPCART_API_KEY;
  */
 
 exports.onRenderBody = function (_ref, pluginOptions) {
-  var setPostBodyComponents = _ref.setPostBodyComponents;
+  var setPostBodyComponents = _ref.setPostBodyComponents,
+      pathname = _ref.pathname;
 
   if (pluginOptions === void 0) {
     pluginOptions = {};
@@ -31,7 +32,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     openCartOnAdd: true,
     useSideCart: false,
     templatesUrl: null
-  }, pluginOptions); // find public api key in options plugin or environment variable
+  }, {}, pluginOptions); // find public api key in options plugin or environment variable
 
 
   var publicApiKey = GATSBY_SNIPCART_API_KEY || _options.publicApiKey;
@@ -69,7 +70,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     as: "script",
     src: "https://cdn.snipcart.com/themes/v" + _options.version + "/default/snipcart.js"
   })];
-  return setPostBodyComponents(components);
+  return _options.shopPages == null || _options.shopPages.includes(pathname) ? setPostBodyComponents(components) : null;
 };
 /**
  * wrapp app with provider for dispatch cart and customer infos
@@ -87,7 +88,7 @@ exports.wrapRootElement = function (_ref2, pluginOptions) {
     version: "3.0.29",
     locales: {},
     defaultLang: "en"
-  }, pluginOptions);
+  }, {}, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };
