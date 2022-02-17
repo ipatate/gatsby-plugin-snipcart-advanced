@@ -20,7 +20,7 @@ exports.wrapPageElement = function (_ref, pluginOptions) {
     pluginOptions = {};
   }
 
-  var includeSnipcart = pluginOptions.shopPages.includes(props.path.replace(/\/$/g, ""));
+  var includeSnipcart = pluginOptions.shopPages == null || pluginOptions.shopPages.includes(props.path.replace(/\/$/g, ""));
 
   if (!includeSnipcart) {
     return element;

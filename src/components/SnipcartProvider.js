@@ -27,7 +27,7 @@ const SnipcartProvider = props => {
     } else {
       listenSnipcart();
     }
-  }, [props, dispatch, defaultLang, locales]);
+  }, [dispatch, defaultLang, locales]);
 
   // find public api key in options plugin or environment variable
   const publicApiKey = process.env.GATSBY_SNIPCART_API_KEY || props.publicApiKey;
