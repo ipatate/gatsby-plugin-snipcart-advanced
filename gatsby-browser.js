@@ -8,22 +8,29 @@ var React = require("react");
 
 var SnipcartProvider = require("./components/SnipcartProvider").default;
 /**
- * wrapp app with provider for dispatch cart and customer infos
+ * wrap page with provider for dispatch cart and customer infos
  */
 
 
-exports.wrapRootElement = function (_ref, pluginOptions) {
-  var element = _ref.element;
+exports.wrapPageElement = function (_ref, pluginOptions) {
+  var element = _ref.element,
+      props = _ref.props;
 
   if (pluginOptions === void 0) {
     pluginOptions = {};
+  }
+
+  var includeSnipcart = pluginOptions.shopPages == null || pluginOptions.shopPages.includes(props.path.replace(/\/$/g, ""));
+
+  if (!includeSnipcart) {
+    return element;
   }
 
   var _options = (0, _extends2.default)({}, {
     version: "3.0.29",
     locales: {},
     defaultLang: "en"
-  }, pluginOptions);
+  }, {}, pluginOptions);
 
   return /*#__PURE__*/React.createElement(SnipcartProvider, _options, element);
 };

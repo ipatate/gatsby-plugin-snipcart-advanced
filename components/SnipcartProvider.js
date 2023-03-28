@@ -8,6 +8,10 @@ var React = require('react');
 var _require = require('../store'),
     useStore = _require.useStore,
     SnipcartContext = _require.SnipcartContext;
+
+var Snipcart = require("./Snipcart");
+
+var SnipcartStyles = require("./SnipcartStyles");
 /**
  * @param props : {currency, version}
  */
@@ -22,7 +26,7 @@ var SnipcartProvider = function SnipcartProvider(props) {
       locales = props.locales;
 
   var changeLanguage = function changeLanguage(lang) {
-    var lng = locales[defaultLang] || {};
+    var lng = locales[lang] || {};
     window.Snipcart.api.session.setLanguage(lang, lng);
   };
 
@@ -33,7 +37,8 @@ var SnipcartProvider = function SnipcartProvider(props) {
           type: 'setReady',
           payload: true
         });
-        changeLanguage(defaultLang);
+        var pageLang = document.documentElement.lang || defaultLang;
+        changeLanguage(pageLang);
       });
     };
 
@@ -42,17 +47,46 @@ var SnipcartProvider = function SnipcartProvider(props) {
         type: 'setReady',
         payload: true
       });
-      changeLanguage(defaultLang);
+      var pageLang = document.documentElement.lang || defaultLang;
+      changeLanguage(pageLang);
     } else {
       listenSnipcart();
     }
-  }, [props, dispatch, defaultLang, locales]);
+  }, [dispatch, defaultLang, locales]); // find public api key in options plugin or environment variable
+
+  var publicApiKey = process.env.GATSBY_SNIPCART_API_KEY || props.publicApiKey;
+
+  if (!publicApiKey) {
+    console.log("Error: Snipcart public API Key is not defined. Insert in plugin options the \"publicApiKey\" parameter or use GATSBY_SNIPCART_API_KEY in environment variable");
+  } // Use a default currency value by default. True if plugin option is undefined
+  // or defined as true. False only if plugin option is defined as false.
+
+
+  var provideDefaultCurrency = props.provideDefaultCurrency !== false ? true : false;
   return /*#__PURE__*/React.createElement(SnipcartContext.Provider, {
     value: {
       state: state,
       changeLanguage: changeLanguage
     }
-  }, props.children);
+  }, props.children, /*#__PURE__*/React.createElement(Snipcart, {
+    key: "snipcart",
+    publicApiKey: publicApiKey,
+    innerHTML: props.innerHTML // Only pass currency value if using default currency
+    ,
+    currency: provideDefaultCurrency ? props.currency : null,
+    openCartOnAdd: props.openCartOnAdd,
+    useSideCart: props.useSideCart,
+    templatesUrl: props.templatesUrl
+  }), /*#__PURE__*/React.createElement(SnipcartStyles, {
+    key: "snipcart-style",
+    version: props.version
+  }), /*#__PURE__*/React.createElement("script", {
+    key: "snipcart-script",
+    defer: true,
+    rel: "preload",
+    as: "script",
+    src: "https://cdn.snipcart.com/themes/v" + props.version + "/default/snipcart.js"
+  }));
 };
 
 SnipcartProvider.defaultProps = {

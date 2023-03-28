@@ -24,27 +24,27 @@ exports.SnipcartContext = SnipcartContext;
 var reducer = function reducer(state, action) {
   switch (state, action.type) {
     case "setReady":
-      return (0, _extends2.default)({}, state, {
+      return (0, _extends2.default)({}, state, {}, {
         ready: action.payload
       });
 
     case "setQuantity":
-      return (0, _extends2.default)({}, state, {
+      return (0, _extends2.default)({}, state, {}, {
         cartQuantity: action.payload
       });
 
     case "setUserStatus":
-      return (0, _extends2.default)({}, state, {
+      return (0, _extends2.default)({}, state, {}, {
         userStatus: action.payload
       });
 
     case "setTotal":
-      return (0, _extends2.default)({}, state, {
+      return (0, _extends2.default)({}, state, {}, {
         cartTotal: action.payload
       });
 
     case "setSubTotal":
-      return (0, _extends2.default)({}, state, {
+      return (0, _extends2.default)({}, state, {}, {
         cartSubTotal: action.payload
       });
 
