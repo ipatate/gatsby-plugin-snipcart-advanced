@@ -9,7 +9,6 @@ const SnipcartStyles = require("./SnipcartStyles");
 const SnipcartProvider = props => {
   const [state, dispatch] = useStore();
   const {defaultLang, locales} = props;
-  const pageLang = document.documentElement.lang || defaultLang;
   const changeLanguage = lang => {
     const lng = locales[lang] || {};
     window.Snipcart.api.session.setLanguage(lang, lng);
@@ -18,12 +17,14 @@ const SnipcartProvider = props => {
     const listenSnipcart = () => {
       document.addEventListener('snipcart.ready', () => {
         dispatch({type: 'setReady', payload: true});
+        const pageLang = document.documentElement.lang || defaultLang;
         changeLanguage(pageLang);
       });
     };
 
     if (window.Snipcart !== undefined) {
       dispatch({type: 'setReady', payload: true});
+      const pageLang = document.documentElement.lang || defaultLang;
       changeLanguage(pageLang);
     } else {
       listenSnipcart();
